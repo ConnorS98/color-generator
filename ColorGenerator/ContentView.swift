@@ -18,7 +18,8 @@ struct ContentView: View {
     var body: some View {
         VStack {
             Spacer()
-            Text("COLOR Generator")
+            Image("ColorGenerator")
+//            Text("COLOR Generator")
             Spacer()
             HStack {
                 Circle()
@@ -60,7 +61,21 @@ struct ContentView: View {
                     self.backgrounds[index] = self.cbackgrounds[Int.random(in: 0...self.cbackgrounds.count - 1)]
                     }
                 }) {
-                    Text("Middle")
+                    Text("3")
+                    .bold()
+                    .foregroundColor(.white)
+                    .padding(10)
+                    .padding([.leading, .trailing], 30)
+                    .background(Color.blue)
+                    .cornerRadius(20)
+                }
+                Button(action: {
+                    //Change the middle row
+                    for index in 0...5 {
+                    self.backgrounds[index] = self.cbackgrounds[Int.random(in: 0...self.cbackgrounds.count - 1)]
+                    }
+                }) {
+                    Text("6")
                     .bold()
                     .foregroundColor(.white)
                     .padding(10)
@@ -74,7 +89,7 @@ struct ContentView: View {
                         self.cbackgrounds[Int.random(in: 0...self.cbackgrounds.count - 1)]
                     }
                 }) {
-                    Text("All")
+                    Text("9")
                     .bold()
                     .foregroundColor(.white)
                     .padding(10)
