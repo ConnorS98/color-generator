@@ -12,13 +12,26 @@ import SwiftUI
 struct ContentView: View {
     
     
-    @State private var cbackgrounds = [Color.green, Color.blue, Color.pink, Color.purple, Color.red, Color.yellow, Color.orange]
-    @State private var backgrounds = [Color.black, Color.black, Color.black, Color.black, Color.black, Color.black, Color.black, Color.black, Color.black]
+    @State private var cbackgrounds = [Color.green, Color.blue, Color.pink, Color.purple, Color.red, Color.yellow, Color.orange,
+        Color.init(red: 0, green: 0.502, blue: 0.502, opacity: 1), /* TEAL */
+        Color.orange, Color.init(red: 1, green: 0, blue: 1, opacity: 1), /* CYAN */
+        Color.init(red: 0, green: 1, blue: 0, opacity: 1), /* MAGENTA */
+        Color.init(red: 0.502, green: 0, blue: 0, opacity: 1), /* MAROON */
+        Color.init(red: 0, green: 0, blue: 0.502, opacity: 1), /* NAVY */
+        Color.init(red: 0.545, green: 0, blue: 0, opacity: 1), /* DARK RED*/
+        Color.init(red: 0.251, green: 0.957, blue: 0.816, opacity: 1), /* TURQUOISE */
+        Color.init(red: 0, green: 1, blue: 0, opacity: 1), /* LIME */
+        Color.init(red: 1, green: 0.078, blue: 0.576, opacity: 1), /* DEEP PINK */
+        Color.init(red: 0, green: 1, blue: 0.498, opacity: 1) /* SPRING GREEN*/]
+    
+    @State private var backgrounds = [Color.white, Color.white, Color.white, Color.white, Color.white, Color.white, Color.white, Color.white, Color.white]
     
     var body: some View {
         VStack {
             Spacer()
             Image("ColorGenerator")
+                .resizable()
+                .frame(width: 300.0, height: 30.0)
 //            Text("COLOR Generator")
             Spacer()
             HStack {
@@ -60,6 +73,14 @@ struct ContentView: View {
                     for index in 3...5 {
                     self.backgrounds[index] = self.cbackgrounds[Int.random(in: 0...self.cbackgrounds.count - 1)]
                     }
+                    // reset the top row to white
+                    for index in 0...2 {
+                        self.backgrounds[index] = Color.white
+                    }
+                    // reset the bottom row to white
+                    for index in 6...8 {
+                        self.backgrounds[index] = Color.white
+                    }
                 }) {
                     Text("3")
                     .bold()
@@ -70,9 +91,13 @@ struct ContentView: View {
                     .cornerRadius(20)
                 }
                 Button(action: {
-                    //Change the middle row
+                    //Change the middle and top row
                     for index in 0...5 {
                     self.backgrounds[index] = self.cbackgrounds[Int.random(in: 0...self.cbackgrounds.count - 1)]
+                    }
+                    // reset the bottom row to white
+                    for index in 6...8 {
+                        self.backgrounds[index] = Color.white
                     }
                 }) {
                     Text("6")
@@ -102,7 +127,7 @@ struct ContentView: View {
             Button(action: {
                 
                 self.backgrounds = self.backgrounds.map { _ in
-                    Color.black
+                    Color.white
                 }
             }) {
                 Text("Reset")
