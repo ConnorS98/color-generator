@@ -2,7 +2,7 @@
 Random color generator to encourage using different colors together
 
 [![swift-version](https://img.shields.io/badge/swift-5-brightgreen)](https://github.com/apple/swift)
-[![Platform](https://img.shields.io/cocoapods/p/LFAlertController.svg?style=flat)](http://cocoapods.org/pods/LFAlertController)
+[![Platform](https://img.shields.io/badge/platform-iOS-lightgrey)](http://cocoapods.org/pods/LFAlertController)
 
 Color-Generator is designed to encourage artists to create art using colors they normally would not choose to put togehter.
 Users can choose between 3, 6, and 9 random colors and reset them if they desire.
