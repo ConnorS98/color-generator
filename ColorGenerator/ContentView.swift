@@ -1,30 +1,20 @@
-//
-//  ContentView.swift
-//  MultiButtons
-//
-//  Created by Connor Huffman on 7/16/20.
-//  Copyright © 2020 Connor Huffman. All rights reserved.
-//
-
 import SwiftUI
 
 
 struct ContentView: View {
     
+    @State private var red1:Double = 0
+    @State private var green1:Double = 0
+    @State private var blue1:Double = 0
     
-    @State private var cbackgrounds = [Color.green, Color.blue, Color.pink, Color.purple, Color.red, Color.yellow, Color.orange,
-        Color.init(red: 0, green: 0.502, blue: 0.502, opacity: 1), /* TEAL */
-        Color.orange, Color.init(red: 1, green: 0, blue: 1, opacity: 1), /* CYAN */
-        Color.init(red: 0, green: 1, blue: 0, opacity: 1), /* MAGENTA */
-        Color.init(red: 0.502, green: 0, blue: 0, opacity: 1), /* MAROON */
-        Color.init(red: 0, green: 0, blue: 0.502, opacity: 1), /* NAVY */
-        Color.init(red: 0.545, green: 0, blue: 0, opacity: 1), /* DARK RED*/
-        Color.init(red: 0.251, green: 0.957, blue: 0.816, opacity: 1), /* TURQUOISE */
-        Color.init(red: 0, green: 1, blue: 0, opacity: 1), /* LIME */
-        Color.init(red: 1, green: 0.078, blue: 0.576, opacity: 1), /* DEEP PINK */
-        Color.init(red: 0, green: 1, blue: 0.498, opacity: 1) /* SPRING GREEN*/]
+    @State private var red2:Double = 0
+    @State private var green2:Double = 0
+    @State private var blue2:Double = 0
     
-    @State private var backgrounds = [Color.white, Color.white, Color.white, Color.white, Color.white, Color.white, Color.white, Color.white, Color.white]
+    @State private var red3:Double = 0
+    @State private var green3:Double = 0
+    @State private var blue3:Double = 0
+    
     
     var body: some View {
         VStack {
@@ -32,55 +22,58 @@ struct ContentView: View {
             Image("ColorGenerator")
                 .resizable()
                 .frame(width: 300.0, height: 30.0)
-//            Text("COLOR Generator")
             Spacer()
             HStack {
                 Circle()
-                    .fill(backgrounds[0])
+                    .fill(Color.init(red: red1/255, green: blue1/255, blue: green1/255))
                     .frame(width: 100, height: 100)
                 Circle()
-                    .fill(backgrounds[1])
+                    .fill(Color.init(red: green1/255, green: red1/255, blue: blue1/255))
                     .frame(width: 100, height: 100)
                 Circle()
-                    .fill(backgrounds[2])
-                    .frame(width: 100, height: 100)
-            }
-            HStack {
-                Circle()
-                    .fill(backgrounds[3])
-                    .frame(width: 100, height: 100)
-                Circle()
-                    .fill(backgrounds[4])
-                    .frame(width: 100, height: 100)
-                Circle()
-                    .fill(backgrounds[5])
+                    .fill(Color.init(red: blue1/255, green: green1/255, blue: red1/255))
                     .frame(width: 100, height: 100)
             }
             HStack {
                 Circle()
-                    .fill(backgrounds[6])
+                    .fill(Color.init(red: red2/255, green: blue2/255, blue: green2/255))
                     .frame(width: 100, height: 100)
                 Circle()
-                    .fill(backgrounds[7])
+                    .fill(Color.init(red: green2/255, green: red2/255, blue: blue2/255))
                     .frame(width: 100, height: 100)
                 Circle()
-                    .fill(backgrounds[8])
+                    .fill(Color.init(red: blue2/255, green: green2/255, blue: red2/255))
+                    .frame(width: 100, height: 100)
+            }
+            HStack {
+                Circle()
+                    .fill(Color.init(red: red3/255, green: blue3/255, blue: green3/255))
+                    .frame(width: 100, height: 100)
+                Circle()
+                    .fill(Color.init(red: green3/255, green:red3/255, blue: blue3/255))
+                    .frame(width: 100, height: 100)
+                Circle()
+                    .fill(Color.init(red: blue3/255, green: green3/255, blue: red3/255))
                     .frame(width: 100, height: 100)
             }
             HStack{
                 Button(action: {
                     //Change the middle row
-                    for index in 3...5 {
-                    self.backgrounds[index] = self.cbackgrounds[Int.random(in: 0...self.cbackgrounds.count - 1)]
-                    }
+                     //Change the middle and top row
+                    
+                    self.red2 = Double.random(in: 0...255)
+                    self.blue2 = Double.random(in: 0...255)
+                    self.green2 = Double.random(in: 0...255)
+                    
                     // reset the top row to white
-                    for index in 0...2 {
-                        self.backgrounds[index] = Color.white
-                    }
+                   self.red1 = 0
+                   self.blue1 = 0
+                   self.green1 = 0
+                    
                     // reset the bottom row to white
-                    for index in 6...8 {
-                        self.backgrounds[index] = Color.white
-                    }
+                    self.red3 = 0
+                    self.blue3 = 0
+                    self.green3 = 0
                 }) {
                     Text("3")
                     .bold()
@@ -91,14 +84,19 @@ struct ContentView: View {
                     .cornerRadius(20)
                 }
                 Button(action: {
-                    //Change the middle and top row
-                    for index in 0...5 {
-                    self.backgrounds[index] = self.cbackgrounds[Int.random(in: 0...self.cbackgrounds.count - 1)]
-                    }
+                      //change row 1
+                    self.red1 = Double.random(in: 0...255)
+                    self.blue1 = Double.random(in: 0...255)
+                    self.green1 = Double.random(in: 0...255)
+                    //change row 2
+                    self.red2 = Double.random(in: 0...255)
+                    self.blue2 = Double.random(in: 0...255)
+                    self.green2 = Double.random(in: 0...255)
                     // reset the bottom row to white
-                    for index in 6...8 {
-                        self.backgrounds[index] = Color.white
-                    }
+                    self.red3 = 0
+                    self.blue3 = 0
+                    self.green3 = 0
+                    
                 }) {
                     Text("6")
                     .bold()
@@ -110,9 +108,18 @@ struct ContentView: View {
                 }
                 Button(action: {
                     
-                    self.backgrounds = self.backgrounds.map { _ in
-                        self.cbackgrounds[Int.random(in: 0...self.cbackgrounds.count - 1)]
-                    }
+                    //change row 1
+                   self.red1 = Double.random(in: 0...255)
+                    self.blue1 = Double.random(in: 0...255)
+                    self.green1 = Double.random(in: 0...255)
+                    //change row 2
+                    self.red2 = Double.random(in: 0...255)
+                    self.blue2 = Double.random(in: 0...255)
+                    self.green2 = Double.random(in: 0...255)
+                    // change row 3
+                    self.red3 = Double.random(in: 0...255)
+                    self.blue3 = Double.random(in: 0...255)
+                    self.green3 = Double.random(in: 0...255)
                 }) {
                     Text("9")
                     .bold()
@@ -126,9 +133,20 @@ struct ContentView: View {
             } .padding(.top)
             Button(action: {
                 
-                self.backgrounds = self.backgrounds.map { _ in
-                    Color.white
-                }
+                // reset the top row to black
+                self.red1 = 0
+                self.blue1 = 0
+                self.green1 = 0
+                
+                //reset middle row to black
+                self.red2 = 0
+                self.blue2 = 0
+                self.green2 = 0
+                                 
+                // reset the bottom row to black
+                self.red3 = 0
+                self.blue3 = 0
+                self.green3 = 0
             }) {
                 Text("Reset")
                 .bold()
